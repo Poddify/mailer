@@ -1,0 +1,45 @@
+{
+  "name": "@poddify/mailer",
+  "version": "0.0.1",
+  "description": "Lightweight email library (powered by Mailgun)",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel src --out-dir lib",
+    "coverage": "nyc --check-coverage --reporter=text npm test",
+    "lint": "eslint .js src/ test/",
+    "test": "mocha",
+    "verify": "npm run lint && npm run coverage"
+  },
+  "files": [
+    "/lib",
+    "/src"
+  ],
+  "author": "Poddify <jordan@poddify.com>",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com/Poddify/mailer"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "nodemailer": "^4.6.5",
+    "nodemailer-mailgun-transport": "^1.4.0"
+  },
+  "devDependencies": {
+    "@poddify/eslint-config-poddify": "^1.0.0",
+    "babel-cli": "^6.26.0",
+    "babel-plugin-istanbul": "^4.1.4",
+    "babel-plugin-transform-regenerator": "^6.24.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-3": "^6.24.1",
+    "babel-register": "^6.24.1",
+    "chai": "^4.0.2",
+    "eslint": "^3.19.0",
+    "jsdom": "^11.6.2",
+    "mocha": "^3.4.2",
+    "nyc": "^10.3.2",
+    "proxyquire": "^1.8.0",
+    "sinon": "^2.3.2"
+  }
+}
