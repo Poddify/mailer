@@ -14,7 +14,8 @@ $ npm i --save @poddify/mailer
 import Mailer from '@poddify/mailer';
 
 const mailer = new Mailer({
-    apiKey: MY_API_KEY
+    apiKey: MY_API_KEY,
+    domain: MY_MAILGUN_DOMAIN
 });
 
 mailer.send({
@@ -24,7 +25,6 @@ mailer.send({
     template: EMAIL_TEMPLATE,
     data: EMAIL_TEMPLATE_DATA
 });
-
 ```
 
 ### mailer.send
