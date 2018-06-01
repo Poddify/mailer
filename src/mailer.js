@@ -2,20 +2,16 @@ import nodemailer from 'nodemailer';
 import mailgun from 'nodemailer-mailgun-transport';
 import injectParameters from './util/inject-parameters';
 
-export default class Mailer {
-    mailer;
-
-    constructor(options) {
-        this.initializeTransport(options);
+const createTransport = options => mailgun({
+    auth: {
+        api_key: options.apiKey,
+        domain: options.domain
     }
+});
 
-    initializeTransport(options) {
-        const transport = mailgun({
-            auth: {
-                api_key: options.apiKey,
-                domain: options.domain
-            }
-        });
+export default class Mailer {
+    constructor(options) {
+        const transport = createTransport(options);
 
         this.mailer = nodemailer.createTransport(transport);
     }
