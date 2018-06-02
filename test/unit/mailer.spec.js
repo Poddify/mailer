@@ -51,8 +51,12 @@ describe('Feature: Mailer module', () => {
         const sendMail = sinon.stub();
         const mailer = { sendMail };
 
+        injectParameters.withArgs(template, data).returns(html);
+
         const Mailer = loadModule({
-            './util/inject-parameters': injectParameters,
+            './util/inject-parameters': {
+                default: injectParameters
+            },
             nodemailer: {
                 createTransport: () => mailer
             },
@@ -67,8 +71,6 @@ describe('Feature: Mailer module', () => {
                 template,
                 data
             });
-
-        injectParameters.withArgs(template, data).returns(html);
 
         expect(sendMail.callCount, 'should invoke mailer.sendMail').to.equal(1);
         expect(sendMail.firstCall.args).to.deep.equal([{
