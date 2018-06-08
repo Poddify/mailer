@@ -1,29 +1,20 @@
-import nodemailer from 'nodemailer';
-import mailgun from 'nodemailer-mailgun-transport';
+import Mailgun from 'mailgun-js';
 import injectParameters from './util/inject-parameters';
-
-const createTransport = options => mailgun({
-    auth: {
-        api_key: options.apiKey,
-        domain: options.domain
-    }
-});
 
 export default class Mailer {
     constructor(options) {
-        const transport = createTransport(options);
-
-        this.mailer = nodemailer.createTransport(transport);
+        this.mailer = Mailgun({
+            apiKey: options.apiKey,
+            domain: options.domain
+        });
     }
 
     send(options) {
-        const emailBody = injectParameters(options.template, options.data);
-
-        this.mailer.sendMail({
+        return this.mailer.messages().send({
             from: options.from,
             to: options.to,
             subject: options.subject,
-            html: emailBody
+            html: injectParameters(options.template, options.data)
         });
     }
 }
