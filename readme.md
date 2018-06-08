@@ -1,6 +1,6 @@
-# WIP: @poddify/mailer
+# @poddify/mailer
 
-A lightweight library for sending email
+A lightweight library for sending email using Mailgun
 
 ## Installation
 
@@ -14,16 +14,8 @@ $ npm i --save @poddify/mailer
 import Mailer from '@poddify/mailer';
 
 const mailer = new Mailer({
-    apiKey: MY_API_KEY,
-    domain: MY_MAILGUN_DOMAIN
-});
-
-mailer.send({
-    from: FROM_EMAIL,
-    to: TO_EMAIL,
-    subject: SUBJECT,
-    template: EMAIL_TEMPLATE,
-    data: EMAIL_TEMPLATE_DATA
+    apiKey: MAILGUN_API_KEY,
+    domain: MAILGUN_DOMAIN
 });
 ```
 
@@ -38,6 +30,18 @@ Sends an email
 | subject  | subject line       |
 | template | email HTML         |
 | data     | template data      |
+
+#### Example
+
+```js
+mailer.send({
+    from: FROM_EMAIL,
+    to: TO_EMAIL,
+    subject: SUBJECT,
+    template: EMAIL_TEMPLATE,
+    data: EMAIL_TEMPLATE_DATA
+});
+```
 
 ## Email Templates
 
