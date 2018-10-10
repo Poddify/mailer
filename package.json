@@ -1,6 +1,6 @@
 {
   "name": "@poddify/mailer",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Lightweight email library (powered by Mailgun)",
   "main": "index.js",
   "scripts": {
