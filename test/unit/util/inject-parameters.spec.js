@@ -26,4 +26,12 @@ describe('Feature: Email template parameter injector', () => {
 
         expect(html, 'should inject html parameters').to.equal(expectedHtml);
     });
+
+    it('Scenario: short-circuits templating if no variables provided', () => {
+        const template = Symbol('some email template');
+
+        const html = injectParameters(template);
+
+        expect(html, 'should return the original template intact').to.equal(template);
+    });
 });

@@ -1,4 +1,8 @@
 export default (template, params) => {
+    if (!params) {
+        return template;
+    }
+
     let injected = template;
 
     Object.keys(params)
