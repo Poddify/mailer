@@ -12,8 +12,8 @@ describe('Feature: Email template parameter injector', () => {
             [key]: chance.string()
         }), {});
 
-        let template = chance.string();
-        let expectedHtml = template;
+        let template = chance.string(),
+            expectedHtml = template;
 
         paramKeys.forEach((key) => {
             const pad = chance.string();
