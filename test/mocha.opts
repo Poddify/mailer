@@ -1,3 +1,2 @@
 --recursive
 --reporter progress
---compilers js:babel-register
